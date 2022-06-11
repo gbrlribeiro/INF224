@@ -1,12 +1,15 @@
 #include "media.h"
 
 Media::Media(){
+
 }
 
 Media::~Media(){
+
 }
 
-void Media::printVariables (ostream &s) const{
-    s << "file type:" << getType() << '\n' << "file path:" << getPath() << endl;
+
+void Media::printVariables (std::ostream &s) const{
+    s << "file type:" << getName() << '\n' << "file path:" << getPath() << std::endl;
 }
 

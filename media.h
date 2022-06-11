@@ -4,27 +4,29 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
 
 class Media{
     private:
 
-        string fileType;
-        string filePath;
+        std::string fileName;
+        std::string filePath;
     
     public:
         
         Media();
-        Media(string _fileType, string _filePath) : fileType(_fileType), filePath(_filePath) {};
-        ~Media();
+        Media(std::string _fileName, std::string _filePath) : fileName(_fileName), filePath(_filePath) {}
 
-        inline string getType() const {return fileType;}
-        inline string getPath() const {return filePath;}
+        virtual ~Media();
         
-        inline void setType(string _fileType){fileType = _fileType;}
-        inline void setPath(string _filePath){filePath = _filePath;}
+        inline std::string getName() const {return fileName;}
+        inline std::string getPath() const {return filePath;}
+        
+        inline void setType(std::string _fileName){fileName = _fileName;}
+        inline void setPath(std::string _filePath){filePath = _filePath;}
 
-        void printVariables (ostream &s) const;
+        virtual void printVariables (std::ostream &s) const;
+
+        virtual void play() const = 0;
 };
 
 #endif //media_h
