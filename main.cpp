@@ -7,19 +7,20 @@
 #include "media.h"
 #include "photo.h"
 #include "video.h"
+#include "film.h"
 
 using namespace std;
 
 int main(int argc, const char* argv[])
 {
-    Video *v = new Video("marcel","marcel.mp4", 42);
-    Photo *p = new Photo("paris", "paris.jpg", 1000, 749);
-    v->printVariables(cout);
-    p->printVariables(cout);
-    v->play();
-    p->play();
-    delete v;
-    delete p;
+    int chapters = 10;
+    Film *f = new Film("marcel", "marcel.mp4", 40, chapters);
+    int lengthArr [] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    f->setChapters(chapters, lengthArr);
+    lengthArr[0] = 3;
+    lengthArr[1] = 12;
+    f->printChapters(cout);
+    delete f;
     
     return 0;
 }
