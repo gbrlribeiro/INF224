@@ -21,7 +21,7 @@ class Film : public Video{
         inline int getChapterLength(int chapter) const {return lengthChapters[chapter];}
 
         Film& operator=(const Film& from);
-        void printChapters(std::ostream &s) const;
+        void printVariables(std::ostream &s) const override;
 };
 
 

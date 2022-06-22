@@ -10,7 +10,7 @@ class Media{
 
         std::string fileName;
         std::string filePath;
-    
+
     public:
         
         Media();

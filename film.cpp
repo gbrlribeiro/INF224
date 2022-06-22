@@ -1,6 +1,6 @@
 #include "film.h"
 
-void Film::printChapters(std::ostream &s) const {
+void Film::printVariables(std::ostream &s) const {
     Video::printVariables(s);
     s << "Number of chapters: " << numChapters << std::endl;
     for(int i=0; i<numChapters; i++){
