@@ -19,3 +19,18 @@ void Film::setChapters(int _numChapters, const int* chapterPointer){
         this->lengthChapters[i] = chapterPointer[i];
     }
 }
+
+
+Film& Film::operator=(const Film& from){
+    Video::operator=(from);
+    numChapters = from.numChapters;
+    delete lengthChapters;
+    if(from.lengthChapters){
+        this->setChapters(from.numChapters, from.lengthChapters);
+    }
+    else{
+        lengthChapters = nullptr;
+    }
+    return *this;
+
+}   

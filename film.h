@@ -19,7 +19,8 @@ class Film : public Video{
         inline int getChapters() const {return numChapters;}
         inline const int* getChaptersDuration() const {return lengthChapters;}
         inline int getChapterLength(int chapter) const {return lengthChapters[chapter];}
-        
+
+        Film& operator=(const Film& from);
         void printChapters(std::ostream &s) const;
 };
 
