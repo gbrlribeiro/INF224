@@ -3,9 +3,10 @@
 #include <string>
 #include <list>
 #include <iostream>
+#include <memory>
 #include "media.h"
 
-class Group : public std::list<Media*>{
+class Group : public std::list<std::shared_ptr<Media>>{
     private:
         std::string groupName;
     public:
@@ -15,6 +16,7 @@ class Group : public std::list<Media*>{
         inline void setGroupName(std::string name) {groupName = name;}
 
         void showGroup(std::ostream &s) const;
+        void removeByName(std::string name);
 };
 
 

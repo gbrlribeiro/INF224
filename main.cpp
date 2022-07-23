@@ -9,27 +9,42 @@
 #include "video.h"
 #include "film.h"
 #include "group.h"
+#include "manager.h"
 
 using namespace std;
 
 int main(int argc, const char* argv[])
 {
-   Group *group = new Group("paris photos");
-   Photo *p1 = new Photo("paris1", "paris.jpg", 700, 400);
-   Photo *p2 = new Photo("paris2", "paris2.jpg", 700, 400);
-   Photo *p3 = new Photo("paris3", "paris3.jpg", 700, 400);
-   cout << group->getGroupName() << endl;
-   group->push_back(p1);
-   group->push_back(p2);
-   group->push_back(p3);
-   group->showGroup(cout);
-   delete group;
 
-   cout << "--------------------" << "Making sure photos weren't deleted" << "-----------" << endl;
-
-   p1->printVariables(cout);
-   p2->printVariables(cout);
-   p3->printVariables(cout);
+    Manager* manager = new Manager;
+    GroupPtr group = manager->createGroup("group");
+    PhotoPtr photo1 = manager->createPhoto("paris1", "paris.jpg", 40, 70);
+    PhotoPtr photo2 = manager->createPhoto("paris2", "paris2.jpg",40, 70);
+    VideoPtr video = manager->createVideo("marcel", "marcel.mp4", 36);
+    group->push_back(photo1);
+    group->push_back(photo2);
+    group->push_back(video);
     
+    cout << "We'll print groups contents first: " << '\n' << endl;
+
+    group->showGroup(cout);
+
+    cout << "Now we'll show our created media using manager" << '\n' << endl;
+    manager->playMedia("paris1");
+    
+    cout << "Media should be playing ..." << endl;
+
+    cout << "---------------------------" << endl;
+
+    cout << "Now we'll delete a media and check if it's deleted from the group" << '\n' << endl;
+
+    manager->removeMedia("marcel");
+
+    group->showGroup(cout);
+
+    cout << "Can we still play the video?" << endl;
+    video->play();
+
+    delete manager;
     return 0;
 }

@@ -6,3 +6,8 @@ void Group::showGroup(std::ostream &s) const{
         (*it)->printVariables(s);
     }   
 }
+
+void Group::removeByName(std::string name){
+    this->remove_if([name](std::shared_ptr<Media>p){return (p->getName() == name);});
+    
+}

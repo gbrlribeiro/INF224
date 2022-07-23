@@ -1,0 +1,15 @@
+#ignore object files
+*.o
+
+#ignore executable files
+*.exe
+*.out
+*.app
+
+#json files
+*.json
+
+#log files
+*.log
+
+.vscode/configurationCache.log
