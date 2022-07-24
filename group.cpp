@@ -8,6 +8,12 @@ void Group::showGroup(std::ostream &s) const{
 }
 
 void Group::removeByName(std::string name){
-    this->remove_if([name](std::shared_ptr<Media>p){return (p->getName() == name);});
-    
+    for(auto it : *this){
+        if(it->getName() == name){
+            it.reset();
+            this->remove(it);
+            return;
+        }
+    }
+    std::cout << "Media not found in " << this->getGroupName() << "group." << std::endl;
 }

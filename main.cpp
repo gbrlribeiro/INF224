@@ -25,26 +25,29 @@ int main(int argc, const char* argv[])
     group->push_back(photo2);
     group->push_back(video);
     
-    cout << "We'll print groups contents first: " << '\n' << endl;
+    //cout << "We'll print groups contents first: " << '\n' << endl;
 
-    group->showGroup(cout);
+    //group->showGroup(cout);
 
-    cout << "Now we'll show our created media using manager" << '\n' << endl;
-    manager->playMedia("paris1");
+    //cout << "Now we'll show our created media using manager" << '\n' << endl;
+    //manager->playMedia("paris1");
     
-    cout << "Media should be playing ..." << endl;
+    //cout << "Media should be playing ..." << endl;
 
-    cout << "---------------------------" << endl;
+    //cout << "---------------------------" << endl;
 
-    cout << "Now we'll delete a media and check if it's deleted from the group" << '\n' << endl;
-
+    //cout << "Now we'll delete a media and check if it's deleted from the group" << '\n' << endl;
+    cout << video.use_count() << endl;
     manager->removeMedia("marcel");
 
-    group->showGroup(cout);
+    //group->showGroup(cout);
 
-    cout << "Can we still play the video?" << endl;
+    //cout << "Let's try and play the deleted video!" << endl;
+    cout << video.use_count() << endl;
     video->play();
+    video.reset();
 
+    cout << video.use_count() << endl;
     delete manager;
     return 0;
 }
